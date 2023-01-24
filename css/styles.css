@@ -79,6 +79,11 @@ img {
   margin-bottom: 4em;
 }
 
+.products__cards {
+  display: flex;
+  flex-direction: column;
+}
+
 @media (min-width: 768px) {
   .hero {
     flex-direction: row;
