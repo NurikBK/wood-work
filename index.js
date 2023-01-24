@@ -20,6 +20,7 @@ const changePositions = (e) => {
 cards.forEach((card) => {
     card
         .addEventListener('click', changePositions)
+    setInterval(changePositions,3000)
 })
 
 setClasses();
