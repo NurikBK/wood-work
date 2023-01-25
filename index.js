@@ -1,40 +1,37 @@
+const slides = document.querySelectorAll('.slide');
+let auto = true;
+const intervalTime = 3000;
+let slideInterval;
 
-const cards = document.querySelectorAll('.cards');
-
-const setClasses = () => {
-    const classes = ['left', 'active', 'right'];
-    cards.forEach((card, index) => card.classList.add(classes[index]))
+const nextSlide = () => {
+  // get current class
+  const current = document.querySelector('.current')
+  // remove current class
+  current.classList.remove('current')
+  // add current class to next sibling
+  if(current.nextElementSibling) {
+    current.nextElementSibling.classList.add('current')
+  } else {
+    slides[0].classList.add('current')
+  }
+  setTimeout(() => current.classList.remove('current'), 200)
 }
 
-
-const changePositions = (e) => {
-    const clickedCard = e.currentTarget
-    const activeCard = document.querySelector('.cards.active')
-    if(clickedCard.classList.contains('active')) return;
-    const classesFrom = e.currentTarget.className
-    const classesTo = activeCard.className
-    clickedCard.className = classesTo
-    activeCard.className = classesFrom
+// auto slide
+if(auto) {
+ slideInterval = setInterval(nextSlide, intervalTime)
 }
 
-cards.forEach((card) => {
-    card
-        .addEventListener('click', changePositions)
-    setInterval(changePositions,3000)
-})
-
-setClasses();
-
-const observer = new  IntersectionObserver((entries) => {
+const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
-    if(entry.isIntersecting) {
-      entry.target.classList.add('show')
-    } 
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+    }
     // else {
     //   entry.target.classList.remove('show')
     // }
-  })
-})
+  });
+});
 
 const hiddenElements = document.querySelectorAll('.hidden');
-hiddenElements.forEach(el => observer.observe(el))
+hiddenElements.forEach((el) => observer.observe(el));
