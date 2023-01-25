@@ -15,6 +15,7 @@ $fs-600: 4rem;
 $fs-500: 3rem;
 $fs-400: 2.5rem;
 $fs-300: 1.6rem;
+$fs-200: 1.2rem;
 $main-color: #333;
 $secondary-color: #fff;
 
@@ -24,22 +25,22 @@ body {
   overflow-x: hidden;
 }
 
-.container {
-  width: 80%;
-  margin: 0 auto;
-  padding: 0 1em;
-}
+// .container {
+//   width: 80%;
+//   margin: 0 auto;
+//   padding: 0 1em;
+// }
 
 h1 {
-  font-size: $fs-600;
+  font-size: $fs-500;
 }
 
 h3 {
-  font-size: $fs-400;
+  font-size: $fs-300;
 }
 
 p {
-  font-size: $fs-300;
+  font-size: $fs-200;
 }
 
 a {
@@ -75,127 +76,18 @@ img {
 }
 
 .hero {
-  display: flex;
-  flex-direction: column;
   &__subtitle {
+    font-size: $fs-300;
     margin-bottom: 4em;
-  }
-}
-
-.products__cards {
-  display: flex;
-  flex-direction: column;
-}
-
-// .carousel {
-//   max-width: 800px;
-//   margin: auto;
-//   display: flex;
-//   justify-content: center;
-//   margin-top: 2em;
-//   position: relative;
-//   height: 400px;
-//   &__img {
-//     flex: 1;
-//     width: 20%;
-//     height: 30%;
-//     border-radius: 10px;
-//     box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.2);
-//     position: absolute;
-//     transition: all 400ms ease;
-//     background-size: cover;
-//     background-position: center;
-//   }
-//   &__img:hover:not(.active).left {
-//     transform: translateX(-50%) rotate(-10deg) scale(0.9);
-//   }
-//   &__img:hover:not(.active).right {
-//     transform: translateX(50%) rotate(10deg) scale(0.9);
-//   }
-//   &__img.left {
-//     transform: translateX(-50%) scale(0.9);
-//   }
-//   &__img.right {
-//     transform: translateX(50%) scale(0.9);
-//   }
-//   &__img.active {
-//     z-index: 5;
-//     position: relative;
-//   }
-// }
-
-.left-col {
-  order: 2;
-}
-
-.container2 {
-  order: 1;
-  width: 100%;
-  max-width: 800px;
-  margin: auto;
-  display: flex;
-  justify-content: center;
-  margin-top: 2em;
-  position: relative;
-}
-
-.cards {
-  border-radius: 10px;
-  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.2);
-  position: absolute;
-  width: 33.33%;
-  transition: all 400ms ease;
-  background-size: cover;
-  background-position: center;
-}
-
-.cards:hover:not(.active).left {
-  transform: translateX(-50%) rotate(-10deg) scale(0.9);
-}
-
-.cards:hover:not(.active).right {
-  transform: translateX(50%) rotate(10deg) scale(0.9);
-}
-
-.cards.left {
-  transform: translateX(-50%) scale(0.9);
-}
-
-.cards.right {
-  transform: translateX(50%) scale(0.9);
-}
-
-.cards.active {
-  z-index: 5;
-  position: relative;
-}
-
-.cards__inner {
-  position: relative;
-  padding-bottom: 158.8235294118%;
-}
-
-.card {
-  background-color: #ccc;
-  border-radius: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 2em;
-  & img {
-    max-height: 350px;
-    max-width: 250px;
   }
 }
 
 .btn {
   cursor: pointer;
-  background-color: $main-color;
+  background-color: rgb(0, 0, 0);
   color: $secondary-color;
   padding: 0.7em 1.5em;
   border-radius: 10px;
-  // display: block;
 }
 
 .footer {
@@ -212,9 +104,23 @@ img {
 }
 
 @media (min-width: 768px) {
+  h1 {
+    font-size: $fs-600;
+  }
+
+  h3 {
+    font-size: $fs-400;
+  }
+
+  p {
+    font-size: $fs-300;
+  }
   .hero {
     flex-direction: row;
+    // justify-content: center;
+    align-items: center;
     justify-content: space-between;
+    height: 100vh;
   }
   .nav {
     display: block;
@@ -241,5 +147,65 @@ img {
   }
   .footer {
     flex-direction: row;
+  }
+}
+
+body {
+  background-color: #131316;
+  color: #fff;
+  font-family: $main-font;
+  padding: 0;
+  margin: 0;
+}
+
+section {
+  display: grid;
+  place-items: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #333;
+  margin-bottom: 30px;
+  padding: 2em;
+}
+
+.card img {
+  max-height: 300px;
+  max-width: 200px;
+}
+.card:nth-child(2) {
+  transition-delay: 200ms;
+}
+
+.card:nth-child(3) {
+  transition-delay: 400ms;
+}
+
+.card:nth-child(4) {
+  transition-delay: 600ms;
+}
+
+.hidden {
+  opacity: 0;
+  filter: blur(5px);
+  transform: translateY(30%);
+  transition: all 1s;
+}
+
+.show {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion) {
+  .hidden {
+    transition: none;
   }
 }
