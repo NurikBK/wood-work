@@ -91,6 +91,7 @@ img {
   transform: translateX(150%);
   transition: transform 500ms ease-in-out;
   height: 220px;
+  overflow-x: hidden;
 }
 
 .primary-navigation[data-visible='true'] {
