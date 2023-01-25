@@ -5,21 +5,21 @@ let slideInterval;
 
 const nextSlide = () => {
   // get current class
-  const current = document.querySelector('.current')
+  const current = document.querySelector('.current');
   // remove current class
-  current.classList.remove('current')
+  current.classList.remove('current');
   // add current class to next sibling
-  if(current.nextElementSibling) {
-    current.nextElementSibling.classList.add('current')
+  if (current.nextElementSibling) {
+    current.nextElementSibling.classList.add('current');
   } else {
-    slides[0].classList.add('current')
+    slides[0].classList.add('current');
   }
-  setTimeout(() => current.classList.remove('current'), 200)
-}
+  setTimeout(() => current.classList.remove('current'), 200);
+};
 
 // auto slide
-if(auto) {
- slideInterval = setInterval(nextSlide, intervalTime)
+if (auto) {
+  slideInterval = setInterval(nextSlide, intervalTime);
 }
 
 const observer = new IntersectionObserver((entries) => {
@@ -35,3 +35,18 @@ const observer = new IntersectionObserver((entries) => {
 
 const hiddenElements = document.querySelectorAll('.hidden');
 hiddenElements.forEach((el) => observer.observe(el));
+
+const hamburgerButton = document.querySelector('.mobile-nav-toggle');
+const nav = document.querySelector('.primary-navigation');
+
+hamburgerButton.addEventListener('click', () => {
+  const visibility = nav.getAttribute('data-visible');
+
+  if (visibility === 'false') {
+    nav.setAttribute('data-visible', true);
+    hamburgerButton.setAttribute('aria-expanded', true);
+  } else {
+    nav.setAttribute('data-visible', false);
+    hamburgerButton.setAttribute('aria-expanded', false);
+  }
+});
