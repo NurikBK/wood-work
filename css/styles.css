@@ -11,13 +11,14 @@ html {
 }
 
 body {
-  background-color: #131316;
-  font-family: "Poppins", sans-serif;
-  color: #fff;
+  overflow-x: hidden;
   line-height: 1.6;
+  background-color: #131316;
+  color: #fff;
+  font-family: "Poppins", sans-serif;
   padding: 0;
   margin: 0;
-  overflow-x: hidden;
+  width: 100vw;
 }
 
 .container {
@@ -54,8 +55,6 @@ img {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  position: relative;
-  z-index: 2000;
 }
 
 .primary-navigation {
@@ -75,18 +74,16 @@ img {
   z-index: 1000;
   inset: 0 0 0 30%;
   list-style: none;
+  padding: 2em;
   margin: 0;
   flex-direction: column;
-  opacity: 0;
-  transition: all 500ms ease-in-out;
+  transform: translateX(150%);
+  transition: transform 500ms ease-in-out;
   height: 220px;
-  display: none;
 }
 
 .primary-navigation[data-visible=true] {
   transform: translateX(45%);
-  display: block;
-  opacity: 1;
 }
 
 .mobile-nav-toggle {
@@ -280,11 +277,6 @@ section {
   }
   .mobile-nav-toggle {
     display: none;
-  }
-  .primary-navigation[data-visible=true] {
-    display: flex;
-    flex-direction: row;
-    height: auto;
   }
   .primary-navigation li:hover {
     border-bottom: 1px solid #fff;
